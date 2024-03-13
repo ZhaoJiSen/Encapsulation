@@ -1,0 +1,7 @@
+// 修改组件库中的样式
+.choose-icon-dialog-body-scroll {
+  .el-dialog__body {
+    max-height: 500px;
+    overflow: scroll;
+  }
+}

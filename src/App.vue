@@ -5,21 +5,6 @@
 </template>
 
 <style lang="scss">
-* {
-  padding: 0;
-  margin: 0;
-}
-
-svg {
-  width: 1em !important;
-  height: 1em !important;
-}
-
-html,
-body,
-#app,
-.el-container,
-.el-menu {
-  height: 100%;
-}
+@import "./styles/ui.scss";
+@import "./styles/base.scss";
 </style>
