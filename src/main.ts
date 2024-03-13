@@ -1,5 +1,17 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { createApp } from 'vue';
+import { toLine } from '@/utils/index.ts';
 
-createApp(App).mount('#app')
+import App from './App.vue';
+import router from './router/index.ts';
+import ElementUI from 'element-plus';
+import 'element-plus/dist/index.css';
+import * as ElementPlusIcons from '@element-plus/icons-vue';
+
+const app = createApp(App);
+
+for (const [key, component] of Object.entries(ElementPlusIcons)) {
+  // 注册成全局组件
+  app.component(`el-icon-${toLine(key)}`, component);
+}
+
+app.use(router).use(ElementUI).mount('#app');
