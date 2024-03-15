@@ -6,7 +6,11 @@
     <el-dialog v-model="dialogVisible" :title="title">
       <el-scrollbar height="700px">
         <div class="container">
-          <div v-for="(item, index) of Object.keys(ElIcons)" :key="index" class="item">
+          <div
+            v-for="(item, index) of Object.keys(ElIcons)"
+            :key="index"
+            class="item"
+          >
             <div @click="handleCopy(`el-icon-${toLine(item)}`)">
               <component :is="`el-icon-${toLine(item)}`"></component>
             </div>
