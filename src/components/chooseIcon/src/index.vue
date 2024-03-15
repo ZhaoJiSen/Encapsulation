@@ -1,29 +1,30 @@
 <template>
   <div>
-    <el-button @click="handleClick" type="primary">
+    <el-button type="primary" @click="handleClick">
       <slot></slot>
     </el-button>
     <el-dialog v-model="dialogVisible" :title="title">
-      <el-scrollbar height='700px'>
+      <el-scrollbar height="700px">
         <div class="container">
-          <div class="item" v-for="(item, index) of Object.keys(ElIcons)" :key="index">
-            <div>
+          <div v-for="(item, index) of Object.keys(ElIcons)" :key="index" class="item">
+            <div @click="handleCopy(`el-icon-${toLine(item)}`)">
               <component :is="`el-icon-${toLine(item)}`"></component>
             </div>
             <div>{{ item }}</div>
           </div>
         </div>
       </el-scrollbar>
-      
     </el-dialog>
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref, watch } from 'vue';
+<script lang="ts" setup>
 import type { Ref } from 'vue';
-import * as ElIcons from '@element-plus/icons-vue';
+import { ref, watch } from 'vue';
 import { toLine } from '@/utils';
+
+import * as ElIcons from '@element-plus/icons-vue';
+import useCopy from '@/hooks/useCopy.ts';
 
 const props = defineProps<{
   title: string;
@@ -53,9 +54,14 @@ watch(
 const handleClick = () => {
   emits('update:visible', !props.visible);
 };
+
+const handleCopy = (iconName: string) => {
+  useCopy(iconName);
+  dialogVisible.value = false;
+};
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .container {
   display: flex;
   justify-content: center;
