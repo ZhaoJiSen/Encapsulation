@@ -20,6 +20,14 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/chooseArea',
         component: () => import('@/views/chooseArea/index.vue')
+      },
+      {
+        path: '/message',
+        component: () => import('@/views/message/index.vue')
+      },
+      {
+        path: '/trend',
+        component: () => import('@/views/trend/index.vue')
       }
     ]
   }
@@ -27,7 +35,7 @@ const routes: RouteRecordRaw[] = [
 
 const router = createRouter({
   routes,
-  history: createWebHistory()
+  history: createWebHistory('/'),
 });
 
 export default router;
